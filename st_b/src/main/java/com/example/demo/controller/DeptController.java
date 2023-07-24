@@ -24,6 +24,12 @@ public class DeptController {
 	@Autowired
 	private DeptDAO_mb dao_mb;
 	
+	@GetMapping("/dept/update/{dno}")
+	public String update(Model model,@PathVariable("dno") int dno) {
+		model.addAttribute("d",dao_mb.findByDno(dno));
+		return "/update/dept";
+	}
+	
 	@GetMapping("/dept/list")
 	public void list(Model model) {
 		model.addAttribute("list", dao_JPA.findAll());
