@@ -7,5 +7,4 @@ import com.example.demo.entity.Dept;
 
 @Repository
 public interface DeptDAO_JPA extends JpaRepository<Dept, Integer> {
-
 }

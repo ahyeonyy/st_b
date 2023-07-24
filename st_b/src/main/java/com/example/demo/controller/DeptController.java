@@ -6,9 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.DeptDAO_JPA;
 import com.example.demo.dao.DeptDAO_mb;
+import com.example.demo.entity.Dept;
 
 import lombok.Setter;
 
@@ -20,7 +23,7 @@ public class DeptController {
 
 	@Autowired
 	private DeptDAO_mb dao_mb;
-
+	
 	@GetMapping("/dept/list")
 	public void list(Model model) {
 		model.addAttribute("list", dao_JPA.findAll());
@@ -30,5 +33,15 @@ public class DeptController {
 	public String detail(@PathVariable("dno") int dno,Model model) {
 		model.addAttribute("d",dao_mb.findByDno(dno));
 		return "/dept/detail";
+	}
+	
+	@GetMapping("/dept/insert")
+	public void insert() {
+	}
+	
+	@PostMapping("/dept/insert")
+	public String insert(Dept d) {
+		dao_JPA.save(d);
+		return "redirect:/dept/list";
 	}
 }

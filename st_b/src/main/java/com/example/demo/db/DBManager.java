@@ -1,8 +1,6 @@
 package com.example.demo.db;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -33,6 +31,13 @@ public class DBManager {
 		return d;
 	}
 
+	public static int insert(Dept d) {
+		int re=-1;
+		SqlSession session = sqlSessionFactory.openSession(true);
+		re= session.insert("dept.insert",d);
+		session.close();
+		return re;
+	}
 }
 
 

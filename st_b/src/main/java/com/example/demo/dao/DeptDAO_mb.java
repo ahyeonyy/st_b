@@ -10,4 +10,8 @@ public class DeptDAO_mb {
 	public Dept findByDno(int dno) {
 		return DBManager.findByDno(dno);
 	}
+	
+	public int insert(Dept d) {
+		return DBManager.insert(d);
+	}
 }

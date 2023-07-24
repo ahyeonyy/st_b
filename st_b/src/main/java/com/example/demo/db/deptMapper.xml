@@ -6,13 +6,7 @@
 	<select id="findByDno" resultType="dept">
 		select * from dept where dno = #{dno}
 	</select>
+	<insert id="insert" parameterType="dept">
+		insert into dept values(#{dno},#{dname},#{dloc})
+	</insert>
 </mapper>
-
-
-
-
-
-
-
-
-
