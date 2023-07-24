@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.DeptDAO_JPA;
@@ -22,8 +23,8 @@ public class DeptController {
 	private DeptDAO_JPA dao_JPA;
 
 	@Autowired
-	private DeptDAO_mb dao_mb;
-	
+	private DeptDAO_mb dao_mb;	
+
 	@GetMapping("/dept/update/{dno}")
 	public String update(Model model,@PathVariable("dno") int dno) {
 		model.addAttribute("d",dao_mb.findByDno(dno));
